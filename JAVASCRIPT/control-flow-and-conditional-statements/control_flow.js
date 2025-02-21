@@ -1,4 +1,4 @@
-let userRole = "admin";
+/*let userRole = "admin";
 let accessLevel;
 
 if (userRole === "admin") {
@@ -49,4 +49,34 @@ let isAuthenticated = true;
 
 let authenticationStatus = isAuthenticated ? "Authenticated" : "Not authenticated";
 
-console.log("Authentication Status:", authenticationStatus);
+console.log("Authentication Status:", authenticationStatus);*/
+
+let authorized = false;
+let interaction = false;
+let partial = false;
+let role = 'Non-subscriber'
+let message = '';
+
+switch (role) {
+    case 'Employee':
+        authorized = true;
+        break;
+    case 'Enrolled Member':
+        authorized = true;
+        interaction = true;
+        break;
+    default:
+        partial = true;
+}
+
+if (authorized && !interaction) {
+    message = 'You can enter to the building'
+}
+else if (authorized && interaction) {
+    message = 'You can enter to the building, and you can interact with a dietician';
+}
+else {
+    message = 'You don\'t have access to the building';
+}
+
+console.log(message);
